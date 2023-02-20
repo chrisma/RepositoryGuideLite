@@ -19,5 +19,6 @@ jupyterlite-xeus-wren==0.2.1
 jupyterlite-xeus-sqlite==0.2.1
 plotly>=5,<6
 theme-darcula
-mercury
 matplotlib
+# Custom wheel, as mercury does not provide one
+mercury @ git+https://github.com/NikkelM/RepositoryGuide-Python/blob/2e33a160a92b17c62d137bdc19a0841a8839a32c/mercury-dist/mercury-2.0.9-py3-none-any.whl
