@@ -43,4 +43,4 @@ websocket-client==1.4.2
 execnb
 # ipywidgets==8.0.3
 # Custom wheel, as mercury does not provide one
-'git+https://github.com/NikkelM/RepositoryGuide-Python/blob/main/mercury-dist/mercury-2.0.9-py3-none-any.whl'
+git+https://github.com/NikkelM/RepositoryGuide-Python/blob/main/mercury-dist/mercury-2.0.9-py3-none-any.whl
