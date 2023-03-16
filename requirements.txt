@@ -20,6 +20,7 @@ theme-darcula
 # Custom
 numpy
 pandas
+nbformat>=4.2.0
 
 # We are able to define dependencies that won't work in jupyterlite (for local use), as long as we don't `%pip install` them in the notebook
 PyGithub
