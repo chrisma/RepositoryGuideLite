@@ -1,10 +1,10 @@
-# Interactive data visualization using browser-based Jupyter notebooks
+# Interactive Data Visualization using Browser-based Jupyter Notebooks
 
 You can find the current deployment of this prototype at [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with all required files and information needed to run through the prototyped workflow.
 
 TODO: Quickstart/How to use
 
-## The idea/why we are doing this (The "RepositoryGuide")
+## The "RepositoryGuide"
 
 The Enterprise System and Integration Concepts (EPIC) chair at the Hasso-Plattner-Institute (HPI) owns and develops the [RepositoryGuide](https://github.com/hpi-epic/repositoryguide) tool, which "aims at helping development teams gain insights into their teamwork based on the produced GitHub project data."
 The tool accesses data that is publicly available through the Github API to provide a variety of data analytics and visualizations to inform development teams about their work processes.
@@ -18,7 +18,7 @@ Such customization should not stop at the ability to change color schemes or tim
 Such major changes are not possible from within the tool with the current implementation, but would require users to download the tool's source code and host it on their own server.
 All the same, it is not feasible to try and add such functionality to the current implementation, as its tech stack does not work well with the required level of interactivity and creative freedom. 
 
-## What the tool should offer/goal of the project/Requirements
+## Goal & Requirements of the Prototype
 
 Instead, it was decided to try and prototype a new approach to the RepositoryGuide using Jupyter notebooks, which are known for their interactive nature.
 Moving from Javascript to Python would also relax the barrier to entry for non-technical users, as Python and Jupyter notebooks in particular are already widely used in the data science community, which is certainly a group of users that would benefit from the RepositoryGuide.
@@ -44,7 +44,7 @@ As a minimum requirement, the commit history for a given repository should be ac
 11. The tool *should* be presented in a way that is easy to understand and use for non-technical users.
 Most importantly, the tool *should* only expose code cells when actively requested by the user, and otherwise only expose the interactive elements and visualizations.
 
-## Tools we wanted to use (JupyterLite with Mercury: The perfect match?)
+## *JupyterLite* with *Mercury*: The Perfect Match?
 
 Two external tools prompted the idea for this prototype, as they alone would allow us to meet a majority of the requirements:
 
@@ -66,7 +66,7 @@ The ideal workflow would be to first create the initial notebooks with the tool'
 This would be the frontend the user initially sees, and would allow them to use all of the tool's functionalities.
 If needed or desired, the user would then be able to access and edit the underlying notebooks and thereby add, change or remove functionality using JupyterLite, which would allow them to modify the tool's code to their liking without the need to download any files or external tools, before again converting it to an interactive app using Mercury.
 
-## Getting to work
+## Pyodide Packaging Pains
 
 So, we went ahead and set out to deploy a JupyterLite instance (to Github pages), which, thanks to a great [template repository](https://github.com/jupyterlite/demo) was no problem at all.
 The basic JupyterLite deployment already offers a great host of features.
@@ -96,7 +96,7 @@ Unfortunately, Mercury does not provide a pure Python wheel, which means that we
 
 For the moment however, as we saw Mercury at the core of our tool, we decided to go for it, and package and host the wheel ourselves.
 
-### The sun sets on Mercury
+### The Sun sets on Mercury
 
 After a number of hacks and workarounds (including hosting our own fork of Mercury on PyPi), Pyodide was finally ready to install Mercury in our JupyterLite instance.
 However, this was not the end of our troubles, as we soon ran into another issues:
@@ -111,7 +111,7 @@ All of this was simply not feasible for us, as firstly, the prototype was suppos
 
 So we decided to put Mercury aside for the moment, and instead focus our attention on getting the prototype up and running using only JupyterLite (fortunately, this was not a major setback in the project, as Mercury was meant to be the nice "frontend" stuck on top of the JupyterLite instance, and not the core of the tool).
 
-## The Github API
+## The cursed Github API
 
 The next step would now be to implement the functionality that would allow us to fetch data from the Github API, which would then be used to create the interactive visualizations.
 There are a number of Python implementations of the Github API, but we decided to go with [PyGithub](https://pygithub.readthedocs.io/en/latest/), as it is the most popular one, and also the one that is most actively maintained.
@@ -139,7 +139,7 @@ Unfortunately, this now gives us two of our requirements that we would not fulfi
 - 5: Accessing the Github API from within the JupyterLite instance - instead, the data must be pre-fetched and provided using a JSON file, which is then loaded in the JupyterLite instance.
 - 11: Even though one might argue that Jupyter notebooks in general are easy to use even for non-technical users, it is clear that without Mercury, the tool is not as easy to use or visually appealing as it could have been. And with JupyterLite being aimed at developers, its interface may be conceived as confusing or cluttered by non-technical users. Even though hiding code cells is possible, this is not the default.
 
-## What we have by now
+## Now that we've got the packages sorted out...
 
 So, what *did* we manage to achieve by now, and where do we go from here?
 Whilst we had to drop both the usage of Mercury to "beautify" the JupyterLite instance, and the usage of the Github API to fetch the required data, we did manage to get a running instance of JupyterLite, together with (more importantly) all of the packages we would henceforth be using to build our prototype:
