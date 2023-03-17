@@ -8,7 +8,7 @@ TODO: Quickstart/How to use
 
 The Enterprise System and Integration Concepts (EPIC) chair at the Hasso-Plattner-Institute (HPI) owns and develops the [RepositoryGuide](https://github.com/hpi-epic/repositoryguide) tool, which "aims at helping development teams gain insights into their teamwork based on the produced GitHub project data."
 The tool accesses data that is publicly available through the Github API to provide a variety of data analytics and visualizations to inform development teams about their work processes.
-Users can customize the tool by providing time intervals (sprints) and teams (Github users) which will be used during the analysis.
+Users can customize the tool by providing "Sprints" (time intervals) and "Teams" (Github users) which are used during the analysis.
 
 The major downside of the current implementation of the tool (written in Javascript) is its static nature.
 Aside from the input provided through the configuration files, users cannot quickly make changes to the way the data is analyzed or visualized.
