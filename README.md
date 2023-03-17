@@ -1,4 +1,4 @@
-# Interactive Data Visualization using Browser-based Jupyter Notebooks
+# Interactive Data Visualization using browser-based Jupyter Notebooks
 
 You can find the current deployment of this prototype at [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with all required files and information needed to run through the prototyped workflow.
 
