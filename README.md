@@ -134,11 +134,18 @@ Instead, we decided to go the simplest route possible, and simply dump the data 
 This was not too far-fetched, as the Github API natively returns the data in JSON format.
 PyGithub then parses this data to Python objects, but still keeps the original JSON data, which we can still access using the `raw_data` attribute of the respective objects.
 
-Unfortunately, this now leaves us with two of our requirements that we would not fulfill with this prototype:
+Unfortunately, this now gives us two of our requirements that we would not fulfill with this prototype:
 
 - 5: Accessing the Github API from within the JupyterLite instance - instead, the data must be pre-fetched and provided using a JSON file, which is then loaded in the JupyterLite instance.
 - 11: Even though one might argue that Jupyter notebooks in general are easy to use even for non-technical users, it is clear that without Mercury, the tool is not as easy to use or visually appealing as it could have been. And with JupyterLite being aimed at developers, its interface may be conceived as confusing or cluttered by non-technical users. Even though hiding code cells is possible, this is not the default.
 
-## What we have now
+## What we have by now
+
+So, what *did* we manage to achieve by now, and where do we go from here?
+Whilst we had to drop both the usage of Mercury to "beautify" the JupyterLite instance, and the usage of the Github API to fetch the required data, we did manage to get a running instance of JupyterLite, together with (more importantly) all of the packages we would henceforth be using to build our prototype:
+
+- `ipywidgets` - as the name suggests, we will be using this package to create interactive widgets that would give the user control over the visualizations.
+- `plotly` - this package will be used to create the visualizations themselves, in the case of our prototype, we opted for a heatmap of commit activity spread out over the course of a week.
+- `pandas` - in order to make use of the `plotly.express` module, `pandas` needs to be installed as well, even though we will not be using it directly. 
 
 ## What we want to do next
