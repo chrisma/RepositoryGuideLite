@@ -6,7 +6,7 @@ TODO: Quickstart/How to use
 
 ## The idea/why we are doing this (The "ReposityGuide")
 
-The Enterprise System and Integration Concepts (EPIC) chair at the Hasso-Plattner-Institute (HPI) owns and develops the RepositoryGuide[^1] tool, which "aims at helping development teams gain insights into their teamwork based on the produced GitHub project data."
+The Enterprise System and Integration Concepts (EPIC) chair at the Hasso-Plattner-Institute (HPI) owns and develops the [RepositoryGuide](https://github.com/hpi-epic/repositoryguide) tool, which "aims at helping development teams gain insights into their teamwork based on the produced GitHub project data."
 The tool accesses data that is publicly available through the Github API to provide a variety of data analytics and visualizations to inform development teams about their work processes.
 Users can customize the tool by providing time intervals (sprints) and teams (Github users) which will be used during the analysis.
 
@@ -73,6 +73,3 @@ If needed or desired, the user would then be able to access and edit the underly
 ## What we have now
 
 ## What we want to do next
-
-
-[^1]: https://github.com/hpi-epic/repositoryguide, https://repositorygui.de/
