@@ -115,9 +115,17 @@ So we decided to put Mercury aside for the moment, and instead focus our attenti
 
 The next step would now be to implement the functionality that would allow us to fetch data from the Github API, which would then be used to create the interactive visualizations.
 There are a number of Python implementations of the Github API, but we decided to go with [PyGithub](https://pygithub.readthedocs.io/en/latest/), as it is the most popular one, and also the one that is most actively maintained.
-Again, we tried to install the PyGithub package using pip magic, and again, we ran into the problem that the package requires C extensions, in this case regarding cryptography, which is required for API requests such as signing commits.
+Again, we tried to install the PyGithub package using pip magic, and again, we ran into the problem that the package requires C extensions, in this case regarding cryptography and networking, which PyGithub uses for API requests such as signing commits among others.
 
-For the same reasons that we had abandoned Mercury, we had to abandon the idea of using PyGithub (as well as any of its alternatives, which all have the same problem) within JupyterLite as well.
+However, as mentioned above, there are a lot if Python implementations of the Github API, and so we tried our luck with the next of the bunch, [ghapi](https://ghapi.fast.ai/). This did not work out as well, as ghapi makes use of the `_multiprocessing` module, which is not supported by Pyodide on grounds of browser limitations.
+
+As all good things come in threes, we tried a third implementation, [github3.py](https://github.com/sigmavirus24/github3.py) (This may all sound very time consuming, but remember that all we had to do to find out whether or not a package would work was to try and install it to our JupyterLite frontend).
+At first we thought that this package would be "the one", as it was the only one so far that was able to be installed at all, but unfortunately, our hopes were once again let down, as we once again ran into a shiny new error to add to our collection; this time, while trying to make a request to the Github API.
+
+Obviously, any self-respecting implementation of the Github API will make its requests using HTTPS, as does github3.py.
+Unfortunately, and for reasons I chose not to investigate, Pyodide does not support HTTPS requests, as it does not implement the SSL module.
+With this in mind, we had to abandon the idea of using any of the implementations of the Github API available to us, as we would either not be able to even install many of them, or at the very least, we would not be able to use their functionality from within JupyterLite.
+
 However, not all hope was lost as it was with Mercury, as the interaction with the Github API is not something that *must* be done in the browser to prove the concept of our tool.
 At first, the idea was to simply fetch the data using PyGithub in a local environment, [pickle](https://docs.python.org/3/library/pickle.html) it, and then load it again in the JupyterLite instance.
 This idea was quickly put to rest however, as we realized that in order to unpickle the data, we would need to still have PyGithub installed in our JupyterLite frontend, which as we know is not possible due to its C extensions.
