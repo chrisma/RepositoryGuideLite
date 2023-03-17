@@ -4,7 +4,7 @@ You can find the current deployment of this prototype at [nikkelm.github.io/Repo
 
 TODO: Quickstart/How to use
 
-## The idea/why we are doing this (The "ReposityGuide")
+## The idea/why we are doing this (The "RepositoryGuide")
 
 The Enterprise System and Integration Concepts (EPIC) chair at the Hasso-Plattner-Institute (HPI) owns and develops the [RepositoryGuide](https://github.com/hpi-epic/repositoryguide) tool, which "aims at helping development teams gain insights into their teamwork based on the produced GitHub project data."
 The tool accesses data that is publicly available through the Github API to provide a variety of data analytics and visualizations to inform development teams about their work processes.
