@@ -143,8 +143,27 @@ Unfortunately, even with this workaround, this now gives us two of our requireme
 ## Now that we've got the packages sorted out...
 
 So, what *did* we manage to achieve by now, and where do we go from here?
-Whilst we had to drop both the usage of Mercury to "beautify" the JupyterLite instance, and the usage of the Github API to fetch the required data, we did manage to get a running instance of JupyterLite, together with (most importantly) all of the packages we would henceforth be using to build our prototype:
+Whilst we had to drop both the usage of Mercury to "beautify" the JupyterLite instance as well as using the Github API to fetch the required data, we did manage to get a running instance of JupyterLite, together with (most importantly) all of the packages we would henceforth be using to build our prototype:
 
 - `ipywidgets` - as the name suggests, we will be using this package to create interactive widgets that give the user control over the visualizations.
 - `plotly` - this package will be used to create the visualizations themselves; in the case of our prototype, we opted for a heatmap of commit activity for each day of the week plotted against either the hour or time of day.
 - `pandas` - in order to make use of the `plotly.express` module (used to create the heatmap), `pandas` needs to be installed as well, even though we will not be using it directly.
+
+From here on out everything was pretty straightforward: We created a notebook that loads the data we previously provided in a JSON file, displays some widgets that allow for setting sprints and teams, and then creates the heatmap using `plotly.express`.
+We encountered no more major roadblocks, but only smaller annoyances, such as the fact that `ipywidgets`'s file upload widget is not yet supported in VSCode, which made testing some things very tedious, as we had to mock the data we would have uploaded.
+
+Another thing that we had to work out how best to work with was how to handle widgets that not only set a variable in the notebook, but also trigger a change in the cell's output.
+This can get problematic as we would need to have a way to dynamically update certain parts of a cell's output, without touching other outputs (such as other widgets).
+
+The most prominent example of this in the prototype is the final cell of the notebook, where the user is presented with three dropdown widgets to select for which sprint, team, and "time mode" the heatmap should be computed, which is then displayed below, within the same cell's output.
+If the user changes any of the values in the dropdowns, the heatmap must be updated, but the dropdown widgets themselves must not necessarily be touched.
+Unfortunately, it is not enough to update the heatmap figure, as the output will not get updated that way (if you will, the output is not "passed by reference" but rather "passed by value").
+
+The most idiomatic way to solve this would be to use `IPython`'s `clear_output` function (from the `IPython.display` module), which is supposed to clear all output of a given cell and replace it with newly provided output.
+However, as we have already established, we would like to only update certain parts of our output, and not the entire cell.
+Additionally, we have found that the method, especially when using the optional `wait` parameter, does not correctly clear a cell's output in JupyterLite, instead doing nothing at all, which makes it useless to us.
+
+THe solution we came up with instead was to use (and abuse?) the `ipywidgets.Output()` widget, which is a widget that acts as a container for other outputs.
+You are able to add different outputs to the output widget using the `append_display_data` method, and then display all output at once by simply displaying the output widget itself.
+Internally, the output widget uses a list to keep track of its children, so whenever we want to change one output without affecting the others, we simply replace the output (such as the heatmap) at the appropriate index in the list.
+Opposite to how updating the figure itself would not update the displayed output, replacing an output within the output widget's "output" list will update the output, in a way that does not affect other outputs.
