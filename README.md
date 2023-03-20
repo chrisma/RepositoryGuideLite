@@ -212,3 +212,15 @@ So, with only a few data points, we can already see some interesting patterns em
 Users can use the tool to interactively explore all kinds of data, find patterns and improve the productivity of their teams.
 With the project being based on Jupyter notebooks, it is also very easy for any user to fit the tool to their organization's individual needs, without the need to wait for lengthy deployments or to install any additional software.
 As the tool is completely browser-based, any user can quickly and easily access it from anywhere, without having to have a technical background.
+
+## Final thoughts
+
+Overall, I am very happy with what I was able to achieve with this prototype.
+Especially in comparison with the current, static version of the tool, the interactivity this prototype provides is a huge improvement, even though this comes at a cost:
+
+As was mentioned before, JupyterLite is a very powerful tool, but it also restricts us in the kind of packages we can use.
+Early on, I noticed this when I was unable to integrate Mercury, which would have allowed me to improve the user experience of the prototype - now, users are presented with a raw Jupyter notebook, which may be intimidating to some.
+Later on, I was unable to directly integrate the Github API into the prototype, which directly impacts the usability of the tool, by requiring users to acquire the required repository data themselves through other means.
+Shipping this tool without a tool like Mercury to "beautify" the technical interface is not advisable, and shipping it without a built-in way to interface with the Github API is downright counterintuitive, as it is deeply intertwined with the tool's purpose.
+
+Still, I would think that this prototype is a great proof of concept and hope that in the future, one way or another, it will be possible to overcome these obstacles.
