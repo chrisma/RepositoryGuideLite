@@ -1,8 +1,14 @@
-# Interactive Data Visualization using browser-based Jupyter Notebooks
+# RepoGuide[Lite]: In-Browser Repository Data Exploration for Development Teams
 
-You can find the current deployment of this prototype at [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with all required files and information needed to run through the prototyped workflow.
+The aim of this proof-of-concept is to showcase how<br>
+**software development teams** can be enabled to<br>
+**analyze their own development data** using<br>
+**interactive browser-based notebooks** without any additional software.
+
+The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with the documentation.
 
 TODO: Quickstart/How to use
+TODO: Header image
 
 ## The RepositoryGuide
 
