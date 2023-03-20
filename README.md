@@ -7,9 +7,10 @@ The aim of this proof-of-concept is to showcase how<br>
 **analyze their own development data** using<br>
 **interactive browser-based notebooks** without any additional software.
 
-The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with the documentation.
+The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with its documentation.
 
-TODO: Quickstart/How to use
+All data you need to run the tool is provided in the deployment, but you can feel free to use your own data as well.
+Simple guides on how to use the tool are provided in the relevant notebooks.
 
 ## The RepositoryGuide
 
@@ -176,8 +177,6 @@ Internally, the output widget uses a list to keep track of its children, so when
 Opposite to how updating the figure itself would not update the displayed output, replacing an output within the output widget's "output" list will update the output, in a way that does not affect other outputs.
 
 ## Use Case
-
-![Interactive Heatmap](/images/useCase.gif)
 
 With the completed prototype, we are now able to visualize commit activity for a given repository.
 By providing sprint timings and lists of teams, we add additional ways to filter the data that is being used to generate the heatmap.
