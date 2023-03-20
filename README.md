@@ -1,5 +1,7 @@
 # RepoGuide[Lite]: In-Browser Repository Data Exploration for Development Teams
 
+![Header Image](./images/overview.png)
+
 The aim of this proof-of-concept is to showcase how<br>
 **software development teams** can be enabled to<br>
 **analyze their own development data** using<br>
@@ -8,7 +10,6 @@ The aim of this proof-of-concept is to showcase how<br>
 The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with the documentation.
 
 TODO: Quickstart/How to use
-TODO: Header image
 
 ## The RepositoryGuide
 
