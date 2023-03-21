@@ -1,16 +1,13 @@
 # RepoGuide[Lite]: In-Browser Repository Data Exploration for Development Teams
 
-![Header Image](./images/overview.png)
+The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with its documentation.
 
 The aim of this proof-of-concept is to showcase how<br>
 **software development teams** can be enabled to<br>
 **analyze their own development data** using<br>
 **interactive browser-based notebooks** without any additional software.
 
-The tool is deployed here: [nikkelm.github.io/RepositoryGuide-Python](https://nikkelm.github.io/RepositoryGuide-Python), along with its documentation.
-
-All data you need to run the tool is provided in the deployment, but you can feel free to use your own data as well.
-Simple guides on how to use the tool are provided in the relevant notebooks.
+![Header Image](./images/promo.png)
 
 ## The RepositoryGuide
 
