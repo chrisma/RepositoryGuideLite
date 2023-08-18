@@ -136,14 +136,25 @@ However, not all hope was lost as it was with Mercury, as the interaction with t
 At first, the idea was to simply fetch the data using PyGithub in a local environment, [pickle](https://docs.python.org/3/library/pickle.html) it, and then load it again in the JupyterLite instance.
 This idea was quickly put to rest however, as we realized that in order to unpickle the data, we would need to still have PyGithub installed in our JupyterLite frontend, which as we know is not possible due to its C extensions.
 
-Instead, we decided to go the simplest route possible, and simply dump the data retrieved using PyGithub to a JSON file, which we would then load in the JupyterLite instance.
+Instead, we initially decided to go the simplest route possible, and simply dump the data retrieved using PyGithub to a JSON file, which we would then load in the JupyterLite instance.
 This was not too far-fetched, as the Github API natively returns the data in JSON format.
 PyGithub then parses this data to Python objects, but still keeps the original JSON data, which we can access using the `raw_data` attribute of the respective objects.
 
-Unfortunately, even with this workaround, this now gives us two of our requirements that we would not fulfill with this prototype:
+Unfortunately, even with this workaround, this would leave us with two of our requirements unfulfilled:
 
 - 5: Accessing the Github API from within the JupyterLite instance - instead, the data must be pre-fetched and provided using a JSON file, which is then loaded in the notebook we are running in the JupyterLite instance.
 - 11: Even though one might argue that Jupyter notebooks in general are easy to use even for non-technical users, it is clear that without Mercury, the tool is not as easy to use or visually appealing as it could have been. And with JupyterLite being aimed at developers, its interface may be conceived as confusing or cluttered by non-technical users. Even though hiding code cells is possible, this is not the default.
+
+### Github API: Addendum
+
+*The work described in this section was done shortly before project end, and after writing the rest of the documentation. Therefore, knowledge and progress described here are not considered in later sections.*
+
+Once the bulk of the rest of the project was done (see below), we took another look at how we might be able to use the Github API from within the JupyterLite instance.
+We found that it is possible to use Javascripts `fetch` function from within Python using some of the functionality we get from using Pyodide (see [here](https://github.com/jupyterlite/jupyterlite/discussions/412) or [here](https://pyodide.org/en/stable/usage/faq.html#how-can-i-use-fetch-with-optional-arguments-from-python)), which would allow us to send the required requests to the Github API.
+This greatly simplifies matters, as we can simply circumvent all Python implementations of the API and just directly send HTTPS requests using the Javascript workaround.
+
+The only problem we are now (at the end of the prototyping phase) still facing is the fact that it seems we are as of yet unable to add headers to our fetch requests, which we would need to do in order to authenticate ourselves against the Github API (For those interested, the error we get when uncommenting the relevant lines and running the cell is the very uninformative `JsException: TypeError: Failed to fetch`, for which there do not seem to be any solutions online).
+We can still make the necessary requests, but without authentication the amount of requests we can make is limited, meaning that users will need to make sure they do not run the cell too often.
 
 ## Now that we've got the packages sorted out...
 
